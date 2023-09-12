@@ -30,7 +30,6 @@ export const singInWithGoogle = async () => {
 }
 
 export const registerUserWithEmailPassword = async ({ email, password, displayName }) => {
-    
         try {
             const result = await createUserWithEmailAndPassword( FirebaseAuth, email, password );
             const { uid } = result.user;
@@ -54,4 +53,8 @@ export const loginUserWithEmailPassword = async ({ email, password }) => {
         const errorMessage = error.message;
         return { ok: false, errorMessage }
     }
+}
+
+export const logoutFirebase = async () => {
+    return await FirebaseAuth.signOut();
 }
